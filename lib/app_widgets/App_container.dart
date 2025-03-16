@@ -10,14 +10,14 @@ class AppContainer extends StatelessWidget {
   final Widget? child;
 
   const AppContainer({
-    Key? key,
+    super.key,
     this.height,
     this.width,
     this.radius,
     this.color,
     this.child,
     this.decoration,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class AppContainer extends StatelessWidget {
       decoration:
           decoration ??
           BoxDecoration(
-            color: color ?? Colors.cyanAccent, // Use provided color or default
+            color: color ?? Colors.cyanAccent,
             borderRadius:
                 radius != null
                     ? BorderRadius.circular(radius!)
