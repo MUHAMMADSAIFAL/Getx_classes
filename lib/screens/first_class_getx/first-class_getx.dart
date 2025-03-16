@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:practice_get_application/screens/first_class_getx/first_class_controller.dart';
+import 'package:practice_get_application/controller/counter_controller.dart';
 import 'package:practice_get_application/screens/first_class_getx/second_screen.dart';
 import 'package:practice_get_application/app_widgets/apptext.dart';
 
