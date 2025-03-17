@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_get_application/app_widgets/app_container.dart';
-import 'package:practice_get_application/screens/first_class_getx/second_screen.dart';
+import 'package:practice_get_application/screens/first_class_getx/bottom_default_others_screen.dart';
 import 'package:practice_get_application/app_widgets/app_text.dart';
 import 'package:practice_get_application/screens/second_class_getx/counter_app_screen/counter_screen.dart';
 import 'package:practice_get_application/utilis/app_colors.dart';

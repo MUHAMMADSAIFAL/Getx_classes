@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_get_application/app_widgets/app_container.dart';
 import 'package:practice_get_application/app_widgets/app_text.dart';
+import 'package:practice_get_application/screens/third_class/simply_variables.dart';
+import 'package:practice_get_application/screens/third_class/to_do_app.dart';
 import 'package:practice_get_application/utilis/app_colors.dart';
 import 'package:practice_get_application/utilis/screen_size.dart';
-import '../../../controller/counter_controller.dart';
+import '../../../controller/obs_counter_controller.dart';
 
 class CounterScreen extends StatelessWidget {
   CounterScreen({super.key});
@@ -33,37 +35,67 @@ class CounterScreen extends StatelessWidget {
             color: AppColors.appbackground,
             border: Border.all(color: AppColors.border),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Center(
-                child: Obx(
-                  () => AppText(
-                    text: "Numbers : ${controller.count}",
-                    fontSize: 40,
-                    fontWeight: FontWeight.bold,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Center(
+                  child: Obx(
+                    () => AppText(
+                      text: "Numbers : ${controller.count}",
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    FloatingActionButton(
-                      backgroundColor: AppColors.buttonPrimary,
-                      onPressed: () => controller.increment(),
-                      child: Icon(Icons.add, color: Colors.black),
-                    ),
-                    FloatingActionButton(
-                      backgroundColor: AppColors.buttonPrimary,
-                      onPressed: () => controller.decrement(),
-                      child: Icon(Icons.remove, color: Colors.black),
-                    ),
-                  ],
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      FloatingActionButton(
+                        backgroundColor: AppColors.buttonPrimary,
+                        onPressed: () => controller.increment(),
+                        child: Icon(Icons.add, color: Colors.black),
+                      ),
+                      FloatingActionButton(
+                        backgroundColor: AppColors.buttonPrimary,
+                        onPressed: () => controller.decrement(),
+                        child: Icon(Icons.remove, color: Colors.black),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => SimplyGetxVariables());
+                  },
+
+                  child: Center(
+                    child: AppText(
+                      text: "Go to simple Getx CounterScreen",
+                      fontSize: ScreenSize.width(context) * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => TaskScreen());
+                  },
+
+                  child: Center(
+                    child: AppText(
+                      text: "Go to Todo App",
+                      fontSize: ScreenSize.width(context) * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
