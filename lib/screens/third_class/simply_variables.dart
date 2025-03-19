@@ -8,7 +8,7 @@ import 'package:practice_get_application/utilis/screen_size.dart';
 
 class SimplyGetxVariables extends StatelessWidget {
   SimplyGetxVariables({super.key});
-  final countercontroller counterController = Get.put(countercontroller());
+  final CounterController counterController = Get.find<CounterController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +28,7 @@ class SimplyGetxVariables extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             spacing: 5,
             children: [
-              GetBuilder<countercontroller>(
+              GetBuilder<CounterController>(
                 builder: (controller) {
                   return AppText(
                     text: "count:${counterController.count}",
@@ -38,7 +38,7 @@ class SimplyGetxVariables extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  () => Get.find<countercontroller>().increment();
+                  () => Get.find<CounterController>().increment();
                 },
                 child: AppText(
                   text: "Find controller increment",
@@ -47,7 +47,7 @@ class SimplyGetxVariables extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: () {
-                  () => Get.find<countercontroller>().decrement();
+                  () => Get.find<CounterController>().decrement();
                 },
                 child: AppText(
                   text: "Find controller decrement",

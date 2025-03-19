@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:practice_get_application/app_widgets/app_text.dart';
 import 'package:practice_get_application/app_widgets/app_textfield.dart';
 import 'package:practice_get_application/controller/task_controller.dart';
@@ -8,8 +7,10 @@ import 'package:practice_get_application/utilis/app_colors.dart';
 import 'package:practice_get_application/utilis/screen_size.dart';
 
 class TaskScreen extends StatelessWidget {
-  final TaskController taskController = Get.put(TaskController());
+  final TaskController taskController = Get.find<TaskController>();
   final TextEditingController taskInputController = TextEditingController();
+
+  TaskScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +43,33 @@ class TaskScreen extends StatelessWidget {
                     foregroundColor: AppColors.appbackground,
                   ),
                   onPressed: () {
-                    taskController.addTask(taskInputController.text);
-                    taskInputController.clear();
-                    Get.snackbar(
-                      backgroundColor: AppColors.success,
-                      colorText: AppColors.white,
-                      "task Add Sucessfull",
-                      "You add this ${taskInputController.text} task successfull add on this screen",
-                    );
+                    if (taskInputController.text.toString().isEmpty) {
+                      Get.snackbar(
+                        duration: Duration(seconds: 3),
+
+                        backgroundColor: AppColors.appbackground,
+                        colorText: AppColors.white,
+
+                        "Empty Input Not Allowded",
+                        "Please enter any thing in this Textfield to add task",
+                      );
+                    } else {
+                      if (taskController.tasks.length < 10) {
+                        taskController.addTask(taskInputController.text);
+                        taskInputController.clear();
+                        Get.snackbar(
+                          backgroundColor: AppColors.success,
+                          colorText: AppColors.white,
+                          "Add Sucessfully",
+                          "You add this ${taskInputController.text.toString()} task successfull add on this screen",
+                        );
+                      } else {
+                        Get.snackbar(
+                          "Task Length completed",
+                          "If you add more task to give more length of your task list",
+                        );
+                      }
+                    }
                   },
                   child: AppText(
                     text: "Add",
@@ -76,35 +96,56 @@ class TaskScreen extends StatelessWidget {
                         checkColor: AppColors.appbackground,
                         activeColor: AppColors.white,
                         onChanged: (value) {
-                          taskController.toggleTaskStatus(index);
+                          if (value == true) {
+                            taskController.toggleTaskStatus(index);
+                          } else {
+                            taskController.toggleTaskStatus(index);
+                          }
                         },
                       ),
                       title: Text(
                         task["title"],
                         style: TextStyle(
-                          color: AppColors.white,
-                          fontSize: ScreenSize.width(context) * 0.05,
-                          decoration:
+                          color:
                               task["isCompleted"]
-                                  ? TextDecoration.lineThrough
-                                  : TextDecoration.none,
+                                  ? AppColors.white
+                                  : AppColors.textPrimary,
+                          fontSize: ScreenSize.height(context) * 0.03,
                         ),
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete, color: AppColors.secondary),
+                        icon: Icon(
+                          Icons.delete,
+                          color:
+                              task["isCompleted"]
+                                  ? AppColors.error
+                                  : AppColors.background,
+                          size: ScreenSize.width(context) * 0.1,
+                        ),
                         onPressed: () {
-                          Get.defaultDialog(
-                            backgroundColor: AppColors.appbackground,
-                            title: "Are You sure want to",
-                            middleText:
-                                "you are delete \n this task if you\n deleted this not show more",
-                            middleTextStyle: TextStyle(color: AppColors.white),
-                            onConfirm: () {
-                              taskController.deleteTask(index);
-                              Get.back();
-                            },
-                            textConfirm: "Confirm",
-                          );
+                          if (task["isCompleted"]) {
+                            Get.defaultDialog(
+                              backgroundColor: AppColors.appbackground,
+                              title: "Are you want to delete",
+                              middleText:
+                                  "you are delete \n this task if you\n deleted this not show more",
+                              middleTextStyle: TextStyle(
+                                color: AppColors.white,
+                              ),
+                              onConfirm: () {
+                                taskController.deleteTask(index);
+                                Get.back();
+                              },
+                              textConfirm: "Yes",
+                              onCancel: () {},
+                              textCancel: "No",
+                            );
+                          } else {
+                            Get.snackbar(
+                              "click on cricle",
+                              "cricle ko click karo",
+                            );
+                          }
                         },
                       ),
                     ),

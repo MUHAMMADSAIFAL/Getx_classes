@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:practice_get_application/app_widgets/app_container.dart';
 import 'package:practice_get_application/app_widgets/app_text.dart';
-import 'package:practice_get_application/screens/second_class_getx/counter_app_screen/counter_screen.dart';
 import 'package:practice_get_application/utilis/app_colors.dart';
 import 'package:practice_get_application/utilis/screen_size.dart';
 
@@ -31,18 +30,6 @@ class SecondScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Get.to(() => CounterScreen());
-                  },
-                  child: Center(
-                    child: AppText(
-                      text: "Go to counter screen",
-                      fontSize: ScreenSize.width(context) * 0.05,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
                 ElevatedButton(
                   onPressed: () {
                     Get.defaultDialog(

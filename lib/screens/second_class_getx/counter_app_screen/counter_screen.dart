@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_get_application/app_widgets/app_container.dart';
 import 'package:practice_get_application/app_widgets/app_text.dart';
+import 'package:practice_get_application/controller/obs_counter_controller.dart';
+import 'package:practice_get_application/screens/cart_items/cart_screen.dart';
+import 'package:practice_get_application/screens/user_name/username_screen.dart';
 import 'package:practice_get_application/screens/third_class/simply_variables.dart';
 import 'package:practice_get_application/screens/third_class/to_do_app.dart';
 import 'package:practice_get_application/utilis/app_colors.dart';
 import 'package:practice_get_application/utilis/screen_size.dart';
-import '../../../controller/obs_counter_controller.dart';
 
 class CounterScreen extends StatelessWidget {
   CounterScreen({super.key});
-  final controller = Get.put(FirstClassController());
+  final FirstClassController controller = Get.find<FirstClassController>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class CounterScreen extends StatelessWidget {
       ),
       body: Center(
         child: AppContainer(
+          height: ScreenSize.height(context),
           width: double.infinity,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
@@ -56,12 +59,16 @@ class CounterScreen extends StatelessWidget {
                     children: [
                       FloatingActionButton(
                         backgroundColor: AppColors.buttonPrimary,
-                        onPressed: () => controller.increment(),
+                        onPressed: () {
+                          controller.increment();
+                        },
                         child: Icon(Icons.add, color: Colors.black),
                       ),
                       FloatingActionButton(
                         backgroundColor: AppColors.buttonPrimary,
-                        onPressed: () => controller.decrement(),
+                        onPressed: () {
+                          controller.decrement();
+                        },
                         child: Icon(Icons.remove, color: Colors.black),
                       ),
                     ],
@@ -89,6 +96,32 @@ class CounterScreen extends StatelessWidget {
                   child: Center(
                     child: AppText(
                       text: "Go to Todo App",
+                      fontSize: ScreenSize.width(context) * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => UsernameScreen());
+                  },
+
+                  child: Center(
+                    child: AppText(
+                      text: "Go to Username",
+                      fontSize: ScreenSize.width(context) * 0.05,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Get.to(() => CartScreen());
+                  },
+
+                  child: Center(
+                    child: AppText(
+                      text: "Go to cartItems",
                       fontSize: ScreenSize.width(context) * 0.05,
                       fontWeight: FontWeight.bold,
                     ),
