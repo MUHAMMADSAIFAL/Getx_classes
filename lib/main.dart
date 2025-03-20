@@ -5,7 +5,7 @@ import 'package:practice_get_application/controller/obs_counter_controller.dart'
 import 'package:practice_get_application/controller/simply_controler.dart';
 import 'package:practice_get_application/controller/task_controller.dart';
 import 'package:practice_get_application/controller/username_controller.dart';
-import 'package:practice_get_application/screens/first_class_getx/navigation_class_getx.dart';
+import 'package:practice_get_application/screens/navigation_counterapp/navigation_class_getx.dart';
 
 void main() {
   Get.put(FirstClassController());

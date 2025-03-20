@@ -5,8 +5,8 @@ import 'package:practice_get_application/app_widgets/app_text.dart';
 import 'package:practice_get_application/controller/obs_counter_controller.dart';
 import 'package:practice_get_application/screens/cart_items/cart_screen.dart';
 import 'package:practice_get_application/screens/user_name/username_screen.dart';
-import 'package:practice_get_application/screens/third_class/simply_variables.dart';
-import 'package:practice_get_application/screens/third_class/to_do_app.dart';
+import 'package:practice_get_application/screens/simple_counterapp/simply_variables.dart';
+import 'package:practice_get_application/screens/simple_counterapp/to_do_app.dart';
 import 'package:practice_get_application/utilis/app_colors.dart';
 import 'package:practice_get_application/utilis/screen_size.dart';
 
