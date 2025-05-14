@@ -2,7 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:practice_get_application/app_widgets/app_container.dart';
-import 'package:practice_get_application/screens/navigation_counterapp/bottom_default_others_screen.dart';
+import 'package:practice_get_application/screens/get_api_screens/api_screen.dart';
+import 'package:practice_get_application/screens/navigation_counterapp/Second_screen.dart';
 import 'package:practice_get_application/app_widgets/app_text.dart';
 import 'package:practice_get_application/screens/pasing_arguments/login_screen.dart';
 import 'package:practice_get_application/screens/counter_screen_reactive/counter_app_screen/counter_screen.dart';
@@ -10,8 +11,8 @@ import 'package:practice_get_application/utilis/app_colors.dart';
 
 import '../../utilis/screen_size.dart';
 
-class FirstClassGetx extends StatelessWidget {
-  const FirstClassGetx({super.key});
+class LearningGetx extends StatelessWidget {
+  const LearningGetx({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +85,19 @@ class FirstClassGetx extends StatelessWidget {
                     child: Center(
                       child: AppText(
                         text: "Go to CounterScreen",
+                        fontSize: ScreenSize.width(context) * 0.05,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      Get.to(() => ApiScreen());
+                    },
+
+                    child: Center(
+                      child: AppText(
+                        text: "Go to Api Screen",
                         fontSize: ScreenSize.width(context) * 0.05,
                         fontWeight: FontWeight.bold,
                       ),

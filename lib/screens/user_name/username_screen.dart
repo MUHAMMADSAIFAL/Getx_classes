@@ -17,7 +17,7 @@ class UsernameScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.white,
         title: AppText(
-          text: "Username",
+          text: "Enter Username",
           fontSize: ScreenSize.width(context) * 0.05,
         ),
       ),
@@ -57,7 +57,7 @@ class UsernameScreen extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 hintText: "Age",
                 onChanged: (value) {
-                  controller.age(int.tryParse(value) ?? 20);
+                  controller.age();
                 },
               ),
             ),

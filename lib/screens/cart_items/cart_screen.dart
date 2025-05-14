@@ -5,7 +5,7 @@ import 'package:practice_get_application/controller/cart_controller.dart';
 import 'package:practice_get_application/model/card_model.dart';
 
 class CartScreen extends StatelessWidget {
-  CartScreen({Key? key}) : super(key: key);
+  CartScreen({super.key});
   final CartController cartController = Get.put(CartController());
 
   @override

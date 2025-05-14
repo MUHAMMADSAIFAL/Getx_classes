@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:practice_get_application/utilis/app_colors.dart';
 import 'package:practice_get_application/utilis/screen_size.dart';
 
 class AppContainer extends StatelessWidget {
@@ -22,11 +23,14 @@ class AppContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: height ?? ScreenSize.height(context) * 0.4,
+      height: height ?? ScreenSize.height(context) * 0.5,
       width: width ?? ScreenSize.width(context) * 0.4,
       decoration:
           decoration ??
           BoxDecoration(
+            gradient: LinearGradient(
+              colors: [AppColors.buttonPrimary, Colors.cyanAccent],
+            ),
             color: color ?? Colors.cyanAccent,
             borderRadius:
                 radius != null
